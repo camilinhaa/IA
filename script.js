@@ -4,6 +4,8 @@ const caixaAlternativa=document.querySelector(".caixa-alternativas");
 const caixaResultados=Document.querySelector(".caixa-resultados");
 const textoResultado=document.querySelector(".texto-resultado")
 
+
+
 const perguntas = [
     {
         enunciado: "Assim que saiu da escola você se depara com uma nova tecnologia, um chat que consegue responder todas as dúvidas que uma pessoa pode ter, ele também gera imagens e áudios hiper-realistas. Qual o primeiro pensamento?",
@@ -44,13 +46,23 @@ const perguntas = [
 ];
 let atual=0;
 let perguntaAtual;
+let historiaFinal= "";
+
+
 
 function mostraPerguntas(){
+if(atual) = perguntas.length={
+mostraResultados
+
+}
+
+
 perguntaAtual=perguntas [atual];
 caixaPerguntas.textContent=perguntaAtual.enunciado;
 motraAlternativa();
 }
  
+
 function mostraAlternativas() {
     for(const alternativa of perguntaAtual.alternativas)
     const botaoAlternativas= documet.createElement("button");
@@ -58,5 +70,23 @@ function mostraAlternativas() {
     caixaAlternativas.appendChild(botaoAlternativas);
 
 }
-mostraPergunta();
+
+
+function respostaSelecionada(opcaoSelecionada) {
+    const resposta = opcaoSelecionada.afirmacoes;
+    atual++;
+    mostraPerguntaAtual();
+   }
+
+
+   function mostraPergunta() {
+    if (atual >= perguntas.length) {
+      mostraResultado();
+      return;
+    }
+    perguntaAtual = perguntas[atual];
+    caixaPerguntas.textContent = perguntaAtual.enunciado;
+    mostraAlternativas();
+  }
+  
 
